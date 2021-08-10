@@ -97,7 +97,6 @@ template void GridMaker::check_vector_args(const Grid<float, 2, false>& coords,
 template void GridMaker::check_vector_args(const Grid<float, 2, true>& coords,
     const Grid<float, 2, true>& type_vec, const Grid<float, 1, true>& radii, const Grid<double, 4, true>& out) const;
 
-CUDA_CALLABLE_MEMBER
 float3 GridMaker::get_grid_origin(const float3& grid_center) const {
   float half = dimension / 2.0;
   float3 grid_origin;

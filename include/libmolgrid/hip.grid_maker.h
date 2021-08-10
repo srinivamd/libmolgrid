@@ -244,7 +244,6 @@ class GridMaker {
      * @param[out] a 4D grid
      */
     template <typename Dtype>
-    CUDA_CALLABLE_MEMBER
     void forward(float3 grid_center, const Grid<float, 2, true>& coords,
         const Grid<float, 2, true>& type_vector, const Grid<float, 1, true>& radii,
         Grid<Dtype, 4, true>& out) const;

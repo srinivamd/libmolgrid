@@ -64,6 +64,7 @@ namespace libmolgrid {
     }
     
 
+    CUDA_CALLABLE_MEMBER // XXX:ssubrama1
     uint2 GridMaker::get_bounds_1d(const float grid_origin,
         float coord, float densityrad) const {
       uint2 bounds{0, 0};
@@ -94,6 +95,7 @@ namespace libmolgrid {
 
     //non-binary, gaussian case
     template<>
+	    CUDA_CALLABLE_MEMBER // XXX:ssubrama1
     float GridMaker::calc_point<false>(float ax, float ay, float az, float ar,
         const float3& grid_coords) const {
       float rsq = sqDistance(grid_coords, ax, ay, az);
@@ -119,6 +121,7 @@ namespace libmolgrid {
     }
 
     template<>
+	    CUDA_CALLABLE_MEMBER // XXX:ssubrama1
     float GridMaker::calc_point<true>(float ax, float ay, float az, float ar,
         const float3& grid_coords) const {
       float rsq = sqDistance(grid_coords, ax, ay, az);
@@ -788,6 +791,7 @@ namespace libmolgrid {
     //atomicadd doesn't work with double
 
     //derivative of density type grad with respect to coord
+    CUDA_CALLABLE_MEMBER // XXX: ssubrama1
     float GridMaker::type_grad_grad(float a, float x, float dist, float r) {
       float ret = 0.0;
       float dist2 = dist*dist;
@@ -811,6 +815,7 @@ namespace libmolgrid {
     }
 
     //derivative of density_grad_dist - does not include tmult or G; r should include radius_scale
+    CUDA_CALLABLE_MEMBER // XXX: ssubrama1
     float GridMaker::atom_density_grad_grad(float a, float x, float dist, float r) {
       float ret = 0.0;
       float dist2 = dist*dist;
@@ -835,6 +840,7 @@ namespace libmolgrid {
 
     //derivative of desnity_grad_dist - does not include tmult or G
     //a and x are what we are diff'ign with respect to
+    CUDA_CALLABLE_MEMBER // XXX: ssubrama1
     float GridMaker::atom_density_grad_grad_other(float a, float x, float b, float y, float dist, float r) {
       float ret = 0.0;
       float dist2 = dist*dist;
@@ -857,6 +863,7 @@ namespace libmolgrid {
     }
 
     //ar must include radius scale
+    CUDA_CALLABLE_MEMBER // XXX: ssubrama1
     float GridMaker::density_grad_dist(float dist, float ar) const {
       float agrad_dist = 0.0;
       float dist2 = dist*dist;
@@ -874,6 +881,7 @@ namespace libmolgrid {
       return agrad_dist;
     }
 
+    CUDA_CALLABLE_MEMBER // XXX: ssubrama1
     void GridMaker::accumulate_atom_gradient(float ax, float ay, float az,
         float x, float y, float z, float ar, float gridval, float3& agrad) const {
       //sum gradient grid values overlapped by the atom times the

@@ -18,11 +18,7 @@ namespace libmolgrid {
 template <class G>
 class CartesianGrid {
     G grid_;
-#if defined(__HIP_PLATFORM_HCC__) || defined (__HIP_PLATFORM_AMD__)
-    float3 center_ {0,};
-#else
     float3 center_ = {0,};
-#endif
     float resolution_ = 0.0;
   public:
     /// Initialize CartesianGrid

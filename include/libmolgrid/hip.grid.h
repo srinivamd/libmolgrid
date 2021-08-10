@@ -63,7 +63,7 @@ class Grid {
     }
 
     CUDA_CALLABLE_MEMBER void check_index(size_t i, size_t dim) const {
-#if !defined(__CUDA_ARCH__) && !defined(__HIP_DEVICE_COMPILE__)
+#ifndef __CUDA_ARCH__
       if(i >= dim) {
         throw std::out_of_range("Invalid range. "+itoa(i) + " >= " + itoa(dim));
       }
@@ -236,7 +236,7 @@ class Grid<Dtype,1,isCUDA> {
     size_t dims[1]; /// length of array
 
     CUDA_CALLABLE_MEMBER void check_index(size_t i, size_t dim) const {
-#if !defined(__CUDA_ARCH__) && !defined(__HIP_DEVICE_COMPILE__)
+#ifndef __CUDA_ARCH__
       if(i >= dim) {
         throw std::out_of_range("Invalid range. "+ itoa(i) + " >= " + itoa(dim));
       }

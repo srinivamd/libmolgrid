@@ -11,14 +11,14 @@ include_directories(SYSTEM ${OPENBABEL3_INCLUDE_DIR})
 set( TEST_SRCS
  test_coordinateset.cpp
  test_grid.cpp
- test_grid.cu
+ hip.test_grid.cu.cpp
  test_gridmaker.cpp
- test_gridmaker.cu
- test_mgrid.cpp
- test_mgrid.cu
+ hip.test_gridmaker.cu.cpp
+ hip.test_mgrid.cpp
+ hip.test_mgrid.cu.cpp
  test_quaternion.cpp
  test_transform.cpp
- test_transform.cu
+ hip.test_transform.cu.cpp
 )
 
 #Run through each source

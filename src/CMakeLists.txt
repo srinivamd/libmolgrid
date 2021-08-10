@@ -8,12 +8,12 @@ set( LIBMOLGRID_SOURCES
  example_provider.cpp
  example_dataset.cpp
  grid_maker.cpp
- grid_maker.cu
+ grid_maker.cu.cpp
  coordinateset.cpp
- coordinateset.cu
+ coordinateset.cu.cpp
  coord_cache.cpp
  transform.cpp
- transform.cu
+ transform.cu.cpp
  grid_io.cpp
  cartesian_grid.cpp
 )

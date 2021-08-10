@@ -24,9 +24,11 @@ include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PYTHON_NUMPY_INCLUDE_DIR})
 
+if (NOT DEFINED USE_ROCM)
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
 #numpy header has unused function
     set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} -Wno-unused-function")
+endif()
 endif()
 
 add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/bindings.cpp COMMAND ${CMAKE_COMMAND} -P set_docstrings.cmake 
