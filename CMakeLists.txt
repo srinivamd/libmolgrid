@@ -165,6 +165,10 @@ if( CMAKE_CXX_COMPILER MATCHES ".*/hipcc$" )
 endif( )
 
 message(STATUS "Using AMDGPU_TARGETS: ${AMDGPU_TARGETS}")
+foreach(amdgpu_target ${AMDGPU_TARGETS})
+  set(CMAKE_CXX_FLAGS " --amdgpu-target=${amdgpu_target} ${CMAKE_CXX_FLAGS} ")
+endforeach()
+message(STATUS "DEBUG-5 CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
 
 
 # enable testing
